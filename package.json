@@ -1,0 +1,33 @@
+{
+    "name": "sw",
+    "version": "0.1.0",
+    "description": "rest api",
+    "main": "server.js",
+    "scripts": {
+        "dev": "NODE_ENV=development node-dev ./src/server.js",
+        "test": "jest ."
+    },
+    "keywords": [
+        "rest",
+        "api",
+        "star-wars",
+        "express",
+        "mongo"
+    ],
+    "author": "victor",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^0.21.1",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "express-async-handler": "^1.1.4",
+        "mongoose": "^5.11.10",
+        "morgan": "^1.10.0"
+    },
+    "devDependencies": {
+        "eslint": "^7.17.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-plugin-import": "^2.22.1",
+        "node-dev": "^6.2.0"
+    }
+}
