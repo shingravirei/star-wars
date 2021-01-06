@@ -1,19 +1,25 @@
 const asyncHandler = require('express-async-handler');
 const { Planeta } = require('../models');
+const { quantidadeAparicoes } = require('../services');
 
 module.exports = (router) => {
     router.get(
         '/planeta',
         asyncHandler(async (req, res) => {
-            const { search } = req.query;
-
-            if (search) {
-                // TODO: implement search
-            }
-
             const planetas = await Planeta.find({});
 
-            res.json(planetas);
+            return res.json(planetas);
+        })
+    );
+
+    router.get(
+        '/planeta/search',
+        asyncHandler(async (req, res) => {
+            const { nome, id } = req.query;
+
+            console.log(nome, id);
+
+            res.json({ some: 'qiz' });
         })
     );
 
@@ -26,11 +32,35 @@ module.exports = (router) => {
                 return res.status(400).json({ erro: 'propriedade faltando' });
             }
 
-            const planeta = new Planeta({ nome, clima, terreno });
+            const nAparicoesFilmes = await quantidadeAparicoes(nome);
+
+            const planeta = new Planeta({
+                nome,
+                clima,
+                terreno,
+                nAparicoesFilmes
+            });
 
             await planeta.save();
 
             return res.status(201).json(planeta);
+        })
+    );
+
+    router.delete(
+        '/planeta/:id',
+        asyncHandler(async (req, res) => {
+            const { id } = req.params;
+
+            const planeta = await Planeta.findOneAndDelete({
+                _id: id
+            });
+
+            if (!planeta) {
+                return res.status(404).end();
+            }
+
+            return res.status(204).end();
         })
     );
 };

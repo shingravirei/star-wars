@@ -1,9 +1,10 @@
 module.exports = (mongoose) => {
     const planetaSchema = new mongoose.Schema(
         {
-            nome: String,
-            clima: String,
-            terreno: String
+            nome: { type: String, required: true },
+            clima: { type: String, required: true },
+            terreno: { type: String, required: true },
+            nAparicoesFilmes: { type: Number, default: 0 }
         },
         { versionKey: false }
     );
