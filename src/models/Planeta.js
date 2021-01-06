@@ -4,7 +4,7 @@ module.exports = (mongoose) => {
             nome: { type: String, required: true },
             clima: { type: String, required: true },
             terreno: { type: String, required: true },
-            nAparicoesFilmes: { type: Number, default: 0 }
+            nAparicoesFilmes: { type: Number, required: true }
         },
         { versionKey: false }
     );

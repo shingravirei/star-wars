@@ -17,9 +17,31 @@ module.exports = (router) => {
         asyncHandler(async (req, res) => {
             const { nome, id } = req.query;
 
-            console.log(nome, id);
+            if (!nome && !id) {
+                return res.status(400).end();
+            }
 
-            res.json({ some: 'qiz' });
+            if (nome) {
+                const planeta = await Planeta.findOne({ nome });
+
+                if (!planeta) {
+                    return res.status(404).end();
+                }
+
+                return res.json({ planeta });
+            }
+
+            if (id) {
+                const planeta = await Planeta.findById({ _id: id });
+
+                if (!planeta) {
+                    return res.status(404).end();
+                }
+
+                return res.json({ planeta });
+            }
+
+            return res.status(404).end();
         })
     );
 
