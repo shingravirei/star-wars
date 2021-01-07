@@ -22,6 +22,7 @@ module.exports = {
         indent: ['error', 4],
         'comma-dangle': 'off',
         'implicit-arrow-linebreak': 'off',
-        'global-require': 'off'
+        'global-require': 'off',
+        'object-curly-newline': 'off'
     }
 };
