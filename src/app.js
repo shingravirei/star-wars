@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const registerPlanetaRoute = require('./routes/planeta');
-const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
 const router = express.Router();
