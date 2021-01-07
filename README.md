@@ -7,7 +7,7 @@ PORT -> numero da porta
 DB_USER -> nome do usuario da database
 DB_PASSWORD -> password para acessar a database
 DB_NAME -> nome da database
-DB_NAME_TEST= -> nome da database para usar no test
+DB_NAME_TEST -> nome da database para usar no test
 ```
 
 para rodar os testes use
